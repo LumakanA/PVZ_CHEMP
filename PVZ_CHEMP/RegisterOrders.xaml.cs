@@ -1,32 +1,42 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
 
 namespace PVZ_CHEMP
 {
-    /// <summary>
-    /// Логика взаимодействия для RegisterOrders.xaml
-    /// </summary>
     public partial class RegisterOrders : Window
     {
         public RegisterOrders()
         {
             InitializeComponent();
+
+            // Получение последнего номера заказа и отображение его в текстовом поле
+            int lastOrderId = DBConnector.GetLastOrderId();
+            txtIdOrder.Text = (lastOrderId + 1).ToString();
+            int lastCellId = DBConnector.GetLastCellId();
+            txtCell.Text = (lastCellId + 1).ToString();
+            txtStatus.Text = "Поступил";
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
+            string date = txtData.Text;
+            string status = txtStatus.Text = "Поступил";
 
+            // Создание объекта Order
+            Order order = new Order
+            {
+                Date = DateTime.Parse(date),
+                Status = status,
+            };
+
+            // Добавление заказа в базу данных
+            DBConnector.AddOrder(order);
+
+            // Обновление номера заказа на следующий
+            txtIdOrder.Text = (Convert.ToInt32(txtIdOrder.Text) + 1).ToString();
+
+
+            txtCell.Text = (Convert.ToInt32(txtCell.Text) + 1).ToString();
         }
     }
 }

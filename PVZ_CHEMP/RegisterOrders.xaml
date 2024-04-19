@@ -3,7 +3,6 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:PVZ_CHEMP"
         mc:Ignorable="d"
         Title="MainWindow" Height="1080" Width="1920"
         WindowStartupLocation="CenterScreen"
@@ -11,18 +10,16 @@
         MinWidth="1080"
         WindowState="Maximized">
     <Grid>
-
-        <Button Margin="0,478,0,0" Height="150" Width="350"  HorizontalAlignment="Center" VerticalAlignment="Top">
-            <TextBlock Text="Регистрация поступивших заказов" TextWrapping="Wrap" TextTrimming="WordEllipsis" FontSize="24" VerticalAlignment="Center" HorizontalAlignment="Center" TextAlignment="Center"/>
+        <Label Content="ID Заказа" HorizontalAlignment="Left" Margin="534,50,0,0" VerticalAlignment="Top" Width="116" Height="43" FontSize="24"/>
+        <TextBox IsReadOnly="True" Name="txtIdOrder" HorizontalAlignment="Left" Margin="655,50,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="798" FontSize="24" Height="43" AutomationProperties.ItemStatus="" MaxLines="1"/>
+        <Label Content="Номер ячейки" HorizontalAlignment="Left" Margin="463,286,0,0" VerticalAlignment="Top" Width="187" Height="43" FontSize="24"/>
+        <TextBox IsReadOnly="True" Name="txtCell" HorizontalAlignment="Left" Margin="655,286,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="798" FontSize="24" Height="43" AutomationProperties.ItemStatus="" MaxLines="1"/>
+        <Label Content="Дата поступления" HorizontalAlignment="Left" Margin="443,126,0,0" VerticalAlignment="Top" Width="207" Height="44" FontSize="24" RenderTransformOrigin="0.512,0.513"/>
+        <Label Content="Статус" HorizontalAlignment="Left" Margin="463,212,0,0" VerticalAlignment="Top" Width="187" Height="43" FontSize="24"/>
+        <TextBox IsReadOnly="True" Name="txtStatus" HorizontalAlignment="Left" Margin="655,212,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="798" FontSize="24" Height="43" AutomationProperties.ItemStatus="" MaxLines="1"/>
+        <Button Height="128" Width="1086"  HorizontalAlignment="Center" VerticalAlignment="Center" Click="Button_Click">
+            <TextBlock Text="Зарегистрировать" TextWrapping="Wrap" TextTrimming="WordEllipsis" FontSize="24" VerticalAlignment="Center" HorizontalAlignment="Center" TextAlignment="Center"/>
         </Button>
-        <Label Content="Название" HorizontalAlignment="Left" Margin="534,50,0,0" VerticalAlignment="Top" Width="116" Height="43" FontSize="24"/>
-        <TextBox HorizontalAlignment="Left" Margin="655,50,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="798" FontSize="24" Height="43" AutomationProperties.ItemStatus="" MaxLines="1"/>
-        <Label Content="Ячейка" HorizontalAlignment="Left" Margin="563,125,0,0" VerticalAlignment="Top" Width="87" Height="44" FontSize="24" RenderTransformOrigin="0.512,0.513"/>
-        <TextBox HorizontalAlignment="Left" Margin="655,126,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="798" FontSize="24" Height="43" AutomationProperties.ItemStatus="" MaxLines="1"/>
-        <Label Content="Срок хранения" HorizontalAlignment="Left" Margin="476,196,0,0" VerticalAlignment="Top" Width="174" Height="44" FontSize="24"/>
-        <DatePicker HorizontalAlignment="Left" Margin="655,197,0,0" VerticalAlignment="Top" Width="275" Height="43" FontSize="24"/>
-        <Button Margin="0,478,0,0" Height="150" Width="350"  HorizontalAlignment="Center" VerticalAlignment="Top">
-            <TextBlock Text="Регистрация поступивших заказов" TextWrapping="Wrap" TextTrimming="WordEllipsis" FontSize="24" VerticalAlignment="Center" HorizontalAlignment="Center" TextAlignment="Center"/>
-        </Button>
+        <DatePicker Name="txtData" HorizontalAlignment="Left" Margin="655,136,0,0" VerticalAlignment="Top" Height="34" Width="798" FontSize="22"/>
     </Grid>
 </Window>
