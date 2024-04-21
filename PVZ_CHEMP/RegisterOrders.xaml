@@ -13,7 +13,7 @@
         <Label Content="ID Заказа" HorizontalAlignment="Left" Margin="534,50,0,0" VerticalAlignment="Top" Width="116" Height="43" FontSize="24"/>
         <TextBox IsReadOnly="True" Name="txtIdOrder" HorizontalAlignment="Left" Margin="655,50,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="798" FontSize="24" Height="43" AutomationProperties.ItemStatus="" MaxLines="1"/>
         <Label Content="Номер ячейки" HorizontalAlignment="Left" Margin="463,286,0,0" VerticalAlignment="Top" Width="187" Height="43" FontSize="24"/>
-        <TextBox IsReadOnly="True" Name="txtCell" HorizontalAlignment="Left" Margin="655,286,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="798" FontSize="24" Height="43" AutomationProperties.ItemStatus="" MaxLines="1"/>
+        <TextBox Name="txtCell" HorizontalAlignment="Left" Margin="655,286,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="798" FontSize="24" Height="43" AutomationProperties.ItemStatus="" MaxLines="1"/>
         <Label Content="Дата поступления" HorizontalAlignment="Left" Margin="443,126,0,0" VerticalAlignment="Top" Width="207" Height="44" FontSize="24" RenderTransformOrigin="0.512,0.513"/>
         <Label Content="Статус" HorizontalAlignment="Left" Margin="463,212,0,0" VerticalAlignment="Top" Width="187" Height="43" FontSize="24"/>
         <TextBox IsReadOnly="True" Name="txtStatus" HorizontalAlignment="Left" Margin="655,212,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="798" FontSize="24" Height="43" AutomationProperties.ItemStatus="" MaxLines="1"/>

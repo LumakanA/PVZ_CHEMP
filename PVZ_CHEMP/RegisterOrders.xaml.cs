@@ -9,11 +9,11 @@ namespace PVZ_CHEMP
         {
             InitializeComponent();
 
-            // Получение последнего номера заказа и отображение его в текстовом поле
-            int lastOrderId = DBConnector.GetLastOrderId();
+            Order order = new Order
+            {
+            };
+            int lastOrderId = DBConnector.GetLastOrderID(order);
             txtIdOrder.Text = (lastOrderId + 1).ToString();
-            int lastCellId = DBConnector.GetLastCellId();
-            txtCell.Text = (lastCellId + 1).ToString();
             txtStatus.Text = "Поступил";
         }
 
@@ -25,18 +25,18 @@ namespace PVZ_CHEMP
             // Создание объекта Order
             Order order = new Order
             {
-                Date = DateTime.Parse(date),
+                ArrivedDate = DateTime.Parse(date),
                 Status = status,
             };
+            int lastOrderId = DBConnector.GetLastOrderID(order);
 
+            DBConnector.AddClientIDFromOrder(lastOrderId, order);
             // Добавление заказа в базу данных
             DBConnector.AddOrder(order);
 
+
             // Обновление номера заказа на следующий
             txtIdOrder.Text = (Convert.ToInt32(txtIdOrder.Text) + 1).ToString();
-
-
-            txtCell.Text = (Convert.ToInt32(txtCell.Text) + 1).ToString();
         }
     }
 }

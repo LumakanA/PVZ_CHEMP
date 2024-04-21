@@ -1,10 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Data.SqlClient;
-using System.Windows.Media.Media3D;
 using System.Windows.Controls;
 
 namespace PVZ_CHEMP
@@ -41,62 +36,89 @@ namespace PVZ_CHEMP
             {
                 connection.Open();
 
-                string query = "INSERT INTO Orders (Date, Status) " +
-                               "VALUES (@Date, @Status)";
+                string query = "INSERT INTO Orders (ArrivedDate, Status, CellNumber) " +
+                               "VALUES (@ArrivedDate, @Status, @CellNumber)";
 
                 using (SqlCommand command = new SqlCommand(query, connection))
                 {
-                    command.Parameters.AddWithValue("@Date", order.Date);
+                    command.Parameters.AddWithValue("@ArrivedDate", order.ArrivedDate);
                     command.Parameters.AddWithValue("@Status", order.Status);
+                    command.Parameters.AddWithValue("@CellNumber", order.CellNumber);
                     command.ExecuteNonQuery();
                 }
             }
         }
 
-        public static int GetLastOrderId()
+        public static int GetLastOrderID(Order order)
         {
-            int lastOrderId = 0;
-
-            using (SqlConnection connection = new SqlConnection(ConnectionString))
+            using (SqlConnection sqlConnection = new SqlConnection(ConnectionString))
             {
-                connection.Open();
+                sqlConnection.Open();
 
-                string query = "SELECT TOP 1 ID_order FROM Orders ORDER BY ID_order DESC";
+                string query = "SELECT MAX(OrderID) FROM Orders";
 
-                using (SqlCommand command = new SqlCommand(query, connection))
+                using (SqlCommand command = new SqlCommand(query, sqlConnection))
                 {
+                    // Выполняем запрос и получаем результат
                     object result = command.ExecuteScalar();
-                    if (result != null && result != DBNull.Value)
+
+                    // Проверяем, что результат не является DBNull и конвертируем его в int
+                    if (result != DBNull.Value)
                     {
-                        lastOrderId = Convert.ToInt32(result);
+                        return Convert.ToInt32(result);
+                    }
+                    else
+                    {
+                        // Если результат равен DBNull, возвращаем -1 или другое значение по умолчанию
+                        return 0;
                     }
                 }
             }
-
-            return lastOrderId;
         }
 
-        public static int GetLastCellId()
+        public static void AddClientIDFromOrder(int orderId, Order order)
         {
-            int lastCellId = 0;
+            // Переменная для хранения ID клиента
+            int clientId;
 
-            using (SqlConnection connection = new SqlConnection(ConnectionString))
+            // Получение ID клиента по ID заказа
+            using (SqlConnection sqlConnection = new SqlConnection(ConnectionString))
             {
-                connection.Open();
+                sqlConnection.Open();
 
-                string query = "SELECT TOP 1 Cell FROM Orders ORDER BY Cell DESC";
+                // Запрос для получения ID клиента по ID заказа
+                string query = "SELECT ClientID FROM Orders WHERE OrderID = @OrderID";
 
-                using (SqlCommand command = new SqlCommand(query, connection))
+                using (SqlCommand command = new SqlCommand(query, sqlConnection))
                 {
-                    object result = command.ExecuteScalar();
-                    if (result != null && result != DBNull.Value)
-                    {
-                        lastCellId = Convert.ToInt32(result);
-                    }
+                    command.Parameters.AddWithValue("@OrderId", orderId);
+                    clientId = (int)command.ExecuteScalar();
+                }
+
+                string query2 = "INSERT INTO Orders (ClientID) " +
+               "VALUES (@ClientID)";
+
+                using (SqlCommand command = new SqlCommand(query2, sqlConnection))
+                {
+                    command.Parameters.AddWithValue("@ClientID", order.ClientID);
+                    command.ExecuteNonQuery();
                 }
             }
 
-            return lastCellId;
+            // Вставка ID клиента в таблицу Clients
+            using (SqlConnection sqlConnection = new SqlConnection(ConnectionString))
+            {
+                sqlConnection.Open();
+
+                // Запрос для вставки ID клиента в таблицу Clients
+                string query = "INSERT INTO Clients (ClientID) VALUES (@ClientID)";
+
+                using (SqlCommand command = new SqlCommand(query, sqlConnection))
+                {
+                    command.Parameters.AddWithValue("@ClientID", clientId);
+                    command.ExecuteNonQuery();
+                }
+            }
         }
     }
 }
