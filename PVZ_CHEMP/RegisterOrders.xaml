@@ -13,13 +13,19 @@
         <Label Content="ID Заказа" HorizontalAlignment="Left" Margin="534,50,0,0" VerticalAlignment="Top" Width="116" Height="43" FontSize="24"/>
         <TextBox IsReadOnly="True" Name="txtIdOrder" HorizontalAlignment="Left" Margin="655,50,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="798" FontSize="24" Height="43" AutomationProperties.ItemStatus="" MaxLines="1"/>
         <Label Content="Номер ячейки" HorizontalAlignment="Left" Margin="463,286,0,0" VerticalAlignment="Top" Width="187" Height="43" FontSize="24"/>
-        <TextBox Name="txtCell" HorizontalAlignment="Left" Margin="655,286,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="798" FontSize="24" Height="43" AutomationProperties.ItemStatus="" MaxLines="1"/>
+        <TextBox IsReadOnly="True" Name="txtCell" HorizontalAlignment="Left" Margin="655,286,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="798" FontSize="24" Height="43" AutomationProperties.ItemStatus="" MaxLines="1"/>
+        <Label Content="Либо введите номер ячейки самостоятельно:" HorizontalAlignment="Left" Margin="798,343,0,0" VerticalAlignment="Top" Width="512" Height="43" FontSize="24"/>
+        <TextBox Name="txtCustomCell" HorizontalAlignment="Left" Margin="655,398,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="798" FontSize="24" Height="43" AutomationProperties.ItemStatus="" MaxLines="1"/>
+
         <Label Content="Дата поступления" HorizontalAlignment="Left" Margin="443,126,0,0" VerticalAlignment="Top" Width="207" Height="44" FontSize="24" RenderTransformOrigin="0.512,0.513"/>
         <Label Content="Статус" HorizontalAlignment="Left" Margin="463,212,0,0" VerticalAlignment="Top" Width="187" Height="43" FontSize="24"/>
         <TextBox IsReadOnly="True" Name="txtStatus" HorizontalAlignment="Left" Margin="655,212,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="798" FontSize="24" Height="43" AutomationProperties.ItemStatus="" MaxLines="1"/>
-        <Button Height="128" Width="1086"  HorizontalAlignment="Center" VerticalAlignment="Center" Click="Button_Click">
+        <Button Height="128" Width="1086"  HorizontalAlignment="Center" VerticalAlignment="Top" Click="Button_Click" RenderTransformOrigin="0.497,1.211" Margin="0,786,0,0">
             <TextBlock Text="Зарегистрировать" TextWrapping="Wrap" TextTrimming="WordEllipsis" FontSize="24" VerticalAlignment="Center" HorizontalAlignment="Center" TextAlignment="Center"/>
         </Button>
         <DatePicker Name="txtData" HorizontalAlignment="Left" Margin="655,136,0,0" VerticalAlignment="Top" Height="34" Width="798" FontSize="22"/>
+        <Button Height="62" Width="195"  HorizontalAlignment="Left" VerticalAlignment="Top" RenderTransformOrigin="0.497,1.211" Margin="20,20,0,0" Click="Button_Click_1">
+            <TextBlock Text="Назад" TextWrapping="Wrap" TextTrimming="WordEllipsis" FontSize="24" VerticalAlignment="Center" HorizontalAlignment="Center" TextAlignment="Center"/>
+        </Button>
     </Grid>
 </Window>

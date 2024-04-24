@@ -1,0 +1,25 @@
+﻿<Window x:Class="PVZ_CHEMP.InventoryWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:PVZ_CHEMP"
+        mc:Ignorable="d"
+        Title="InventoryWindow" Height="720" Width="1080"
+        WindowStartupLocation="CenterScreen"
+        MinHeight="720"
+        MinWidth="1080">
+    <Grid>
+        <Button Height="44" Width="156"  HorizontalAlignment="Left" VerticalAlignment="Top" RenderTransformOrigin="0.497,1.211" Margin="10,10,0,0" Click="Button_Click_1">
+            <TextBlock Text="Назад" TextWrapping="Wrap" TextTrimming="WordEllipsis" FontSize="24" VerticalAlignment="Center" HorizontalAlignment="Center" TextAlignment="Center"/>
+        </Button>
+        <DataGrid x:Name="dgInventory" AutoGenerateColumns="False" Margin="0,69,0,0">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Order ID" Binding="{Binding OrderID}" />
+                <DataGridTextColumn Header="Arrived Date" Binding="{Binding ArrivedDate}" />
+                <DataGridTextColumn Header="Status" Binding="{Binding Status}" />
+                <DataGridTextColumn Header="Cell Number" Binding="{Binding CellNumber}" />
+            </DataGrid.Columns>
+        </DataGrid>
+    </Grid>
+</Window>
